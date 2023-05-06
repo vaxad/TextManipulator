@@ -14,9 +14,9 @@ export default function Navbar(props) {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">{props.other1}</a>
         </li>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <a className="nav-link" href="https://www.linkedin.com/in/varad-prabhu-622621270/">{props.other2}</a>
-        </li> */}
+        </li>
         
         
       </ul>
