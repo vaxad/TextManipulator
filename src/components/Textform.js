@@ -40,17 +40,20 @@ export default function Textform(props) {
     return (
         <>
         <div style={{color: props.mode==='dark'?'white':'black'}}>
-            <h1>{props.heading}</h1>  
-            <div className="mb-3">
+            <h1 className='mb-2'>{props.heading}</h1>  
+            <div className="my-3">
                 <textarea className="form-control" id="myBox"  value={text} onChange={handleOnChange} rows="8" style={{backgroundColor: props.mode==='dark'?'black':'white', color: props.mode==='dark'?'white':'black'}}></textarea>
             </div>
-            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} mx-3`} onClick={toUpr}>Convert to Uppercase</button>
-            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'}`} onClick={toInverse}>Convert to InVeRsEcAsE</button>
-            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} mx-3`} onClick={clrBox}>Clear</button>
-            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'}`} onClick={cpy}>Copy</button>
-            <div className="container my-3">
+            <div className="row">
+            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} mx-3 col-sm`} onClick={toUpr}>Convert to Uppercase</button>
+            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} col-sm`} onClick={toInverse}>Convert to InVeRsEcAsE</button>
+            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} mx-3 col-sm`} onClick={clrBox}>Clear</button>
+            <button type="button" class={`btn btn-outline-${props.mode==='dark'?'light':'dark'} col-sm`} onClick={cpy}>Copy</button>
+        
+            </div>
+            <div className="container">
                 <h1>Summary:</h1>
-                <p>{text.length===0?"0 words 0 characters":text.split(" ").length+" words, "+text.length+" characters"}</p>
+                <p>{text.length===0?"0 words 0 characters":(text.charAt(text.length-1)==='\n')||(text.charAt(text.length-1)===' ')?text.split(/\s+/).length-1+" words, "+text.length+" characters":text.split(/\s+/).length+" words, "+text.length+" characters"}</p>
                 <p>{text.length===0?0:0.008*text.split(" ").length} minutes required to read</p>
         
             </div>
